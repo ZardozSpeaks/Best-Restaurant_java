@@ -34,4 +34,16 @@ public class RestaurantTest {
     testRestaurant.update();
     assertTrue(Restaurant.all().get(0).equals(testRestaurant));
   }
+
+  @Test
+  public void find_returnsCorrectRestaurant_True() {
+    Restaurant testRestaurant1 = new Restaurant("Thai Basil");
+    Restaurant testRestaurant2 = new Restaurant("Thai Kitchen");
+    Restaurant testRestaurant3 = new Restaurant("Sen Yai");
+    testRestaurant1.save();
+    testRestaurant2.save();
+    testRestaurant3.save();
+    Restaurant savedRestaurant = Restaurant.find(testRestaurant2.getId());
+    assertTrue(testRestaurant2.equals(savedRestaurant));
+  }
 }

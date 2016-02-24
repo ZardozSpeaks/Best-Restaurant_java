@@ -22,6 +22,10 @@ public class Restaurant {
     cuisine_id = cuisineId;
   }
 
+  public int getCuisineId() {
+    return cuisine_id;
+  }
+
   @Override
   public boolean equals(Object otherRestaurant){
     if (!(otherRestaurant instanceof Restaurant)) {
@@ -61,7 +65,18 @@ public class Restaurant {
         .addParameter("cuisine_id", this.cuisine_id)
         .executeUpdate();
       }
+    }
+
+  //FIND
+  public static Restaurant find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM restaurants WHERE id=:id";
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Restaurant.class);
+    }
   }
+
   //
   // //DELETE
   // public void delete() {

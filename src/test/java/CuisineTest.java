@@ -39,5 +39,19 @@ public class CuisineTest {
     assertTrue(myChinese.equals(savedCuisine));
   }
 
+  @Test
+  public void find_cuisineNamefromCuisineID() {
+    Cuisine myThai = new Cuisine("Thai");
+    Cuisine myChinese = new Cuisine("Chinese");
+    Cuisine myItalian = new Cuisine("Italian");
+    myThai.save();
+    myChinese.save();
+    myItalian.save();
+    Cuisine savedCuisine = Cuisine.find(myChinese.getId());
+    String cuisineName = savedCuisine.getType();
+    assertEquals("Chinese",(savedCuisine.getType()));
+  }
+
+
 
 }

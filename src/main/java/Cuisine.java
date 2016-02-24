@@ -51,7 +51,6 @@ public class Cuisine {
   public static Cuisine find(int id) {
     try (Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM cuisine WHERE id=:id";
-
       return con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Cuisine.class);
