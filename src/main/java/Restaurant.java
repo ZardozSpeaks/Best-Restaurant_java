@@ -4,6 +4,7 @@ import java.util.List;
 public class Restaurant {
   private int id;
   private String name;
+  private int cuisine_id;
 
   public Restaurant (String name) {
     this.name = name;
@@ -15,6 +16,10 @@ public class Restaurant {
 
   public String getName() {
     return name;
+  }
+
+  public void setCuisineId(int cuisineId) {
+    cuisine_id = cuisineId;
   }
 
   @Override
@@ -47,15 +52,16 @@ public class Restaurant {
     }
   }
 
-  // //UPDATE
-  // public void update(String newName) {
-  //   this.mName = newName;
-  //   try(Connection con = DB.sql2o.open()) {
-  //     /******************************************************
-  //       Students: TODO: Display all restaurants on main page
-  //     *******************************************************/
-  //     }
-  // }
+  //UPDATE
+  public void update() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE restaurants SET cuisine_id = :cuisine_id WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("id", this.id)
+        .addParameter("cuisine_id", this.cuisine_id)
+        .executeUpdate();
+      }
+  }
   //
   // //DELETE
   // public void delete() {

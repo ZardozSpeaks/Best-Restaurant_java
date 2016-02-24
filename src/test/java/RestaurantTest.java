@@ -25,4 +25,13 @@ public class RestaurantTest {
     testRestaurant.save();
     assertTrue(Restaurant.all().get(0).equals(testRestaurant));
   }
+
+  @Test
+  public void setCuisineId_savesACuisineType() {
+    Restaurant testRestaurant = new Restaurant("Sen Yai");
+    testRestaurant.save();
+    testRestaurant.setCuisineId(1);
+    testRestaurant.update();
+    assertTrue(Restaurant.all().get(0).equals(testRestaurant));
+  }
 }
