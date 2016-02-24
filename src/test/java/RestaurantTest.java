@@ -11,4 +11,18 @@ public class RestaurantTest {
   public void all_emptyAtFirst() {
       assertEquals(Restaurant.all().size(), 0);
   }
+
+  @Test
+  public void equals_returnsTrueIfNamesAretheSame() {
+    Restaurant firstRestaurant = new Restaurant("Sen Yai");
+    Restaurant secondRestaurant = new Restaurant("Sen Yai");
+    assertTrue(firstRestaurant.equals(secondRestaurant));
+}
+
+  @Test
+  public void save_savesRestaurantToTheDatabase_true() {
+    Restaurant testRestaurant = new Restaurant("Sen Yai");
+    testRestaurant.save();
+    assertTrue(Restaurant.all().get(0).equals(testRestaurant));
+  }
 }

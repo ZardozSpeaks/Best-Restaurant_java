@@ -27,47 +27,47 @@ public class Cuisine {
         this.getId() == newCuisine.getId();
     }
   }
-
-  //CREATE
-  public void save() {
-    try (Connection con = DB.sql2o.open()) {
-      /******************************************************
-        Students: TODO: Create sql query and execute update
-      *******************************************************/
-    }
-  }
-
-  //READ
-  public static List<Cuisine> all() {
-    try (Connection con = DB.sql2o.open()) {
-      /******************************************************
-        Students: TODO: Create sql query and execute update
-      *******************************************************/
-    }
-  }
-
-  //UPDATE
-  public void update(String newType) {
-    this.mType = newType;
-    try(Connection con = DB.sql2o.open()) {
-      /******************************************************
-        Students: TODO: Create sql query and execute update
-      *******************************************************/
-    }
-  }
-
-  public void delete() {
-    try(Connection con = DB.sql2o.open()) {
-      /******************************************************
-        Students: TODO: Create sql query and execute update
-      *******************************************************/
-    }
-  }
-
-  /******************************************************
-    Students:
-    TODO: Create find method
-    TODO: Create method to get restaurants
-  *******************************************************/
+  //
+  // //CREATE
+  // public void save() {
+  //   try (Connection con = DB.sql2o.open()) {
+  //     /******************************************************
+  //       Students: TODO: Create sql query and execute update
+  //     *******************************************************/
+  //   }
+  // }
+  //
+  // //READ
+  // public static List<Cuisine> all() {
+  //   try (Connection con = DB.sql2o.open()) {
+  //     /******************************************************
+  //       Students: TODO: Create sql query and execute update
+  //     *******************************************************/
+  //   }
+  // }
+  //
+  // //UPDATE
+  // public void update(String newType) {
+  //   this.mType = newType;
+  //   try(Connection con = DB.sql2o.open()) {
+  //     /******************************************************
+  //       Students: TODO: Create sql query and execute update
+  //     *******************************************************/
+  //   }
+  // }
+  //
+  // public void delete() {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     /******************************************************
+  //       Students: TODO: Create sql query and execute update
+  //     *******************************************************/
+  //   }
+  // }
+  //
+  // /******************************************************
+  //   Students:
+  //   TODO: Create find method
+  //   TODO: Create method to get restaurants
+  // *******************************************************/
 
 }
