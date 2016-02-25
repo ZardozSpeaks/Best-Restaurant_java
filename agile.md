@@ -1,7 +1,7 @@
 # doing
 
-  favorite restaurant that show
-    type of cuisine
+  make restaurant clickable
+
     open hours
     address
 
@@ -14,6 +14,9 @@
 
 cuisine table
 types of cuisine
+
+favorite restaurant that show
+  type of cuisine
 
 #backlog
 

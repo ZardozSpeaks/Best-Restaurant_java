@@ -50,7 +50,6 @@ public class AppTest extends FluentTest {
     goTo(addRestoPath);
     fill("#restaurant").with("Fickle Fries");
     click("option",withText("American"));
-    click(".btn");
     goTo(indexPath);
     assertThat(pageSource()).contains("Fickle Fries");
   }
