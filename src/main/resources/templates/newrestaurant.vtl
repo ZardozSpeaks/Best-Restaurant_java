@@ -5,7 +5,7 @@
     <label for="restaurant">New Restaruant:</label>
     <input type="text" class="form-control" name="restaurant" id="restaurant">
   </div>
-  <select id="cuisine" name="cuisine" class="selectpicker" type="text">
+  <select id="cuisine" name="cuisine" class="form-control" type="text">
       #foreach($cuisine in $cuisines)
         <option value="$cuisine.getId()">$cuisine.getType()</option>
       #end
