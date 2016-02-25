@@ -67,13 +67,23 @@ public class Restaurant {
       }
     }
 
-  //FIND
+  //FIND restaurant by id
   public static Restaurant find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM restaurants WHERE id=:id";
       return con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Restaurant.class);
+    }
+  }
+
+  //FIND restaurant by cuisine_id
+  public static List<Restaurant> findByCuisine(int cuisineId) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM restaurants WHERE cuisine_id=:cuisine_id";
+      return con.createQuery(sql)
+        .addParameter("cuisine_id", cuisineId)
+        .executeAndFetch(Restaurant.class);
     }
   }
 

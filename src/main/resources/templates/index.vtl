@@ -3,16 +3,20 @@
 <form action="/" method="post">
   <div class="form-group">
     <label for="cuisine">Cuisine Type</label>
-    <select id="cuisine" name="cuisine" type="text">
+    <select id="cuisine" name="cuisine" class="selectpicker" type="text">
         #foreach($cuisine in $cuisines)
           <option value="$cuisine.getId()">$cuisine.getType()</option>
         #end
     </select>
-    <button type="button" class="btn btn-danger" name="button">View</button>
+    <button type="submit" class="btn btn-danger" name="button">View</button>
   </div>
+</form>
+
 
 <ul>
 #foreach ($restaurant in $restaurants)
   <li>$restaurant.getName()</li>
 #end
 </ul>
+
+<a href="/new-restaurant"><button class="btn btn-info">Add a Restaurant</button></a>

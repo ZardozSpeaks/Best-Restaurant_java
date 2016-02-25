@@ -5,8 +5,6 @@
     open hours
     address
 
-  cuisine table
-    types of cuisine
 
   find function for restaurant by cuisine
     test to search for "thai"
@@ -14,6 +12,8 @@
 
 #done
 
+cuisine table
+types of cuisine
 
 #backlog
 
