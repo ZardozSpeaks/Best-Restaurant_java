@@ -36,6 +36,7 @@ public class App {
 
     get("/new-restaurant", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("restaurants", Restaurant.all());
       model.put("cuisines", Cuisine.all());
       model.put("template", "templates/newrestaurant.vtl");
       return new ModelAndView(model, layout);
