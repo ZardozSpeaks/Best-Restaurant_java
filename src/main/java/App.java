@@ -26,7 +26,9 @@ public class App {
 
       int selectedCuisineType = Integer.parseInt(request.queryParams("cuisine"));
       List<Restaurant> restaurantsByCuisine = Restaurant.findByCuisine(selectedCuisineType);
+      String cuisineName = Cuisine.find(selectedCuisineType).getType();
 
+      model.put ("cuisineName", cuisineName);
       model.put ("restaurants", restaurantsByCuisine);
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
