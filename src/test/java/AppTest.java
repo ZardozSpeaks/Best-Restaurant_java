@@ -55,4 +55,21 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Fickle Fries");
   }
 
+  @Test
+  public void restaurants_CanBeViewed() {
+    Restaurant testRestaurant = new Restaurant("Shanghai Palace");
+    Restaurant testRestaurant2 = new Restaurant("Goober's Chicken");
+    testRestaurant.save();
+    testRestaurant2.save();
+    Cuisine american = new Cuisine("American");
+    american.save();
+    Cuisine thai = new Cuisine("Thai");
+    thai.save();
+    Cuisine chinese = new Cuisine("Chinese");
+    chinese.save();
+    String viewRestaurantPath = String.format("http://localhost:4567/restaurant/%d", testRestaurant.getId());
+    goTo(viewRestaurantPath);
+    assertThat(pageSource()).contains("Shanghai's Palace");
+  }
+
 }

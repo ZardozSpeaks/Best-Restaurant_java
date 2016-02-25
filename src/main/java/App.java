@@ -34,9 +34,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    /******************************************************
-    Students: TODO: Create page to add a new restaurant
-    *******************************************************/
     get("/new-restaurant", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("cuisines", Cuisine.all());
@@ -65,5 +62,20 @@ public class App {
     TODO: Create page to display restaurants by cuisine type
     *******************************************************/
 
-  }
-}
+    get("/restaurant/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/restaurant.vtl");
+
+      Restaurant restaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
+      String cuisineName = Cuisine.find(restaurant.getCuisineId()).getType();
+
+      model.put("restaurants", Restaurant.all());
+      model.put("cuisines", Cuisine.all());
+      model.put("restaurant", restaurant);
+      model.put("cuisineName", cuisineName);
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+  } //end of main
+} // end of app
