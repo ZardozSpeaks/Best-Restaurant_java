@@ -23,9 +23,36 @@ public class AppTest extends FluentTest {
   @ClassRule
   public static ServerRule server = new ServerRule();
 
-  // @Test
-  // public void rootTest() {
-  //   goTo("http://localhost:4567/");
-  //   assertThat(pageSource()).contains("");
-  // }
+  @Test
+  public void rootTest() {
+    goTo("http://localhost:4567/");
+    assertThat(pageSource()).contains("Besteraunts");
+  }
+
+  @Test
+  public void restaurants_AreDisplayed() {
+    Restaurant testRestaurant = new Restaurant("Shanghai Palace");
+    Restaurant testRestaurant2 = new Restaurant("Goober's Chicken");
+    testRestaurant.save();
+    testRestaurant2.save();
+    String indexPath = "http://localhost:4567/";
+    goTo(indexPath);
+    assertThat(pageSource()).contains("Shanghai Palace");
+    assertThat(pageSource()).contains("Goober's Chicken");
+  }
+
+  @Test
+  public void restaurants_CanBeAdded() {
+    Cuisine american = new Cuisine("American");
+    american.save();
+    String indexPath = "http://localhost:4567/";
+    String addRestoPath = "http://localhost:4567/new-restaurant";
+    goTo(addRestoPath);
+    fill("#restaurant").with("Fickle Fries");
+    click("option",withText("American"));
+    click(".btn");
+    goTo(indexPath);
+    assertThat(pageSource()).contains("Fickle Fries");
+  }
+
 }

@@ -50,7 +50,6 @@ public class App {
       String newName = request.queryParams("restaurant");
       int cuisine = Integer.parseInt(request.queryParams("cuisine"));
       Restaurant newRestaurant = new Restaurant(newName);
-      System.out.println(newRestaurant.getName());
       newRestaurant.save();
       newRestaurant.setCuisineId(cuisine);
       newRestaurant.update();
