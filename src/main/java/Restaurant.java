@@ -1,10 +1,13 @@
 import org.sql2o.*;
 import java.util.List;
+// import java.util.LocalDate;
 
 public class Restaurant {
   private int id;
   private String name;
   private int cuisine_id;
+  // private LocalDate open_hours;
+
 
   public Restaurant (String name) {
     this.name = name;
@@ -22,9 +25,17 @@ public class Restaurant {
     cuisine_id = cuisineId;
   }
 
+  public void setName(String newName) {
+    name = newName;
+  }
+
   public int getCuisineId() {
     return cuisine_id;
   }
+
+  // public LocalDate getOpenHours() {
+  //   return open_hours;
+  // }
 
   @Override
   public boolean equals(Object otherRestaurant){
@@ -57,7 +68,7 @@ public class Restaurant {
   }
 
   //UPDATE
-  public void update() {
+  public void updateCuisineTypeForNewRestaurant() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE restaurants SET cuisine_id = :cuisine_id WHERE id = :id";
       con.createQuery(sql)
@@ -66,6 +77,17 @@ public class Restaurant {
         .executeUpdate();
       }
     }
+
+    public void update() {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "UPDATE restaurants SET cuisine_id = :cuisine_id WHERE id = :id";
+        con.createQuery(sql)
+          .addParameter("id", this.id)
+          // .addParameter("name", this.name)
+          .addParameter("cuisine_id", this.cuisine_id)
+          .executeUpdate();
+        }
+      }
 
   //FIND restaurant by id
   public static Restaurant find(int id) {

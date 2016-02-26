@@ -1,6 +1,5 @@
 # doing
 
-  make restaurant clickable
 
     open hours
     address
@@ -17,9 +16,10 @@ types of cuisine
 
 favorite restaurant that show
   type of cuisine
+  make restaurant clickable
+  style in bootstrap
 
 #backlog
 
-style in bootstrap
 create review class for doing restaurant reviews
 display reviews at bottom of page

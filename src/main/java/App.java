@@ -47,17 +47,12 @@ public class App {
       Restaurant newRestaurant = new Restaurant(newName);
       newRestaurant.save();
       newRestaurant.setCuisineId(cuisine);
-      newRestaurant.update();
+      newRestaurant.updateCuisineTypeForNewRestaurant();
 
       model.put("restaurants", Restaurant.all());
       model.put("cuisines", Cuisine.all());
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-    /******************************************************
-    STUDENTS:
-    TODO: Create page to display information about the selected restaurant
-    TODO: Create page to display restaurants by cuisine type
-    *******************************************************/
 
     get("/restaurant/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
@@ -74,5 +69,23 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/restaurant/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/restaurant.vtl");
+
+      Restaurant restaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
+      restaurant.setName(request.queryParams("restaurant"));
+      restaurant.setCuisineId(Integer.parseInt(request.queryParams("cuisine")));
+      restaurant.update();
+
+      Restaurant updatedRestaurant = Restaurant.find(Integer.parseInt(request.params(":id")));
+      String cuisineName = Cuisine.find(updatedRestaurant.getCuisineId()).getType();
+      model.put("restaurants", Restaurant.all());
+      model.put("cuisines", Cuisine.all());
+      model.put("restaurant", updatedRestaurant);
+      model.put("cuisineName", cuisineName);
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   } //end of main
 } // end of app

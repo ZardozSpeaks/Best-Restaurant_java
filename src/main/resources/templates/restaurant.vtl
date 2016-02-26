@@ -1,2 +1,17 @@
 <h2>$restaurant.getName()</h2>
 <h3>$cuisineName</h3>
+
+<h4>Edit $restaurant.getName() details:</h4>
+
+<form action="/restaurant/$restaurant.getId()" method="post">
+  <div class="form-group">
+    <input required value="$restaurant.getName()" type="text" class="form-control" name="restaurant" id="restaurant">
+  </div>
+  <select required id="cuisine" name="cuisine" class="form-control" type="text">
+        <option value="$restaurant.getCuisineId()" selected="true">$cuisineName</option>
+      #foreach($cuisine in $cuisines)
+        <option value="$cuisine.getId()">$cuisine.getType()</option>
+      #end
+  </select>
+  <button id="submit-resto" type="submit" class="btn btn-info">Submit</button>
+</form>
