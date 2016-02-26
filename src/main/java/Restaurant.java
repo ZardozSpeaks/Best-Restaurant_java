@@ -80,10 +80,10 @@ public class Restaurant {
 
     public void update() {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "UPDATE restaurants SET cuisine_id = :cuisine_id WHERE id = :id";
+        String sql = "UPDATE restaurants SET name = :name, cuisine_id = :cuisine_id WHERE id = :id";
         con.createQuery(sql)
           .addParameter("id", this.id)
-          // .addParameter("name", this.name)
+          .addParameter("name", this.name)
           .addParameter("cuisine_id", this.cuisine_id)
           .executeUpdate();
         }

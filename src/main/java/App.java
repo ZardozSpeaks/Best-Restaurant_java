@@ -26,7 +26,7 @@ public class App {
       List<Restaurant> restaurantsByCuisine = Restaurant.findByCuisine(selectedCuisineType);
       String cuisineName = Cuisine.find(selectedCuisineType).getType();
 
-      model.put ("cuisineName", cuisineName);
+      model.put ("listCuisineName", cuisineName);
       model.put ("restaurants", restaurantsByCuisine);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
